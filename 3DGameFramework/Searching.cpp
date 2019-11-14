@@ -47,4 +47,9 @@ void Searching::Render(const DX::StepTimer& timer) noexcept
 
 void Searching::Finalize() noexcept
 {
+	// マップをクリアする
+	m_pathFinding->ClearMap();
+	// AStarオブジェクトを解放する
+	m_pathFinding.reset();
+	// Mapオブジェクトを解放する
 }

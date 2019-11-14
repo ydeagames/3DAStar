@@ -60,6 +60,11 @@ void Scene::Update(const DX::StepTimer& timer, const DirectX::SimpleMath::Matrix
 	// SPACEキーを押下げた場合
 	if (m_keyboardStateTracker->IsKeyPressed(DirectX::Keyboard::Keys::Space))
 	{
+		//m_enemy->SetStartPosition(Position(rand() % 10, rand() % 10));
+		//m_enemy->SetEndPosition(Position(rand() % 10, rand() % 10));
+		m_enemy->SetStartPosition(Position(2, 2));
+		m_enemy->SetEndPosition(Position(6, 6));
+		m_enemy->ChangeState(m_enemy->GetSearchingState());
 	}
 
 	// Enemyオブジェクトを更新する
