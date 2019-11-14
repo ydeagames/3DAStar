@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework Header">
+      <UniqueIdentifier>{6030d6b9-9150-49e4-8b76-e54591c106da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework Source">
+      <UniqueIdentifier>{a8cab200-f929-4f63-8ab3-52da7fbc3156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{61053a0c-10c9-48bc-b1d8-bdddb66712e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Header">
+      <UniqueIdentifier>{644f445a-7096-44d7-8202-ff9f36486eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Source">
+      <UniqueIdentifier>{9f958b20-ac94-4639-9a7f-e2e9f646ac29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{828dbade-7ec2-46fb-823a-91d4933206fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State\Header">
+      <UniqueIdentifier>{1bb5cbf5-c0e9-4c3d-bffc-d4ba203e1db9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State\Source">
+      <UniqueIdentifier>{0868b16f-6991-4802-bd6e-c29f38e0d45d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Source">
+      <UniqueIdentifier>{df9245dd-266d-442c-bb89-1d967a662857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{605243fa-2518-41c6-b681-ce0867efc785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Header">
+      <UniqueIdentifier>{35997ec5-0148-4c7f-989c-eb1f890adbb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Source">
+      <UniqueIdentifier>{1820cb75-d8f6-4a31-9216-fe36f88634fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{e799fb3f-509c-42bb-a6cc-5b2c1a9010d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Header">
+      <UniqueIdentifier>{27b9e143-d145-4e1f-916c-c2d2bef54917}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework Header\Assets">
+      <UniqueIdentifier>7b157b2a-1a0f-4315-b758-05896a2612af</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.h">
+      <Filter>Game Header</Filter>
+    </ClInclude>
+    <ClInclude Include="StepTimer.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="NonCopyable.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX11.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugCamera.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Game Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ITiledMap.h">
+      <Filter>Map\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledMap.h">
+      <Filter>Map\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AStar.h">
+      <Filter>AI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IShortestPath.h">
+      <Filter>AI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>AI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>Game Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>AI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Game Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MousePrim.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Chasing.h">
+      <Filter>State\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Idling.h">
+      <Filter>State\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>State\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Searching.h">
+      <Filter>State\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game Header</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Framework Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGame.cpp">
+      <Filter>Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX11.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugCamera.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TiledMap.cpp">
+      <Filter>Map\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AStar.cpp">
+      <Filter>AI\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MousePrim.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching.cpp">
+      <Filter>State\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Chasing.cpp">
+      <Filter>State\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Idling.cpp">
+      <Filter>State\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Framework Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="directx.ico">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\grass.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\pattern.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\concrete.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\substance.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\water.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\grey.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+    <Image Include="Resources\texture\CorkBoard.png">
+      <Filter>Framework Header\Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="astar.csv">
+      <Filter>Framework Header\Assets</Filter>
+    </None>
+    <None Include="map.csv">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
