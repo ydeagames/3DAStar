@@ -60,10 +60,15 @@ void Scene::Update(const DX::StepTimer& timer, const DirectX::SimpleMath::Matrix
 	// SPACEƒL[‚ð‰Ÿ‰º‚°‚½ê‡
 	if (m_keyboardStateTracker->IsKeyPressed(DirectX::Keyboard::Keys::Space))
 	{
-		//m_enemy->SetStartPosition(Position(rand() % 10, rand() % 10));
-		//m_enemy->SetEndPosition(Position(rand() % 10, rand() % 10));
-		m_enemy->SetStartPosition(Position(2, 2));
-		m_enemy->SetEndPosition(Position(6, 6));
+		m_enemy->SetStartPosition(Position(rand() % 10, rand() % 10));
+		m_enemy->SetEndPosition(Position(rand() % 10, rand() % 10));
+		//m_enemy->SetStartPosition(Position(2, 2));
+		//m_enemy->SetEndPosition(Position(9, 9));
+		std::stringstream sb;
+		sb << "Start: {" << "X: " << m_enemy->GetStartPosition().row << "Y: " << m_enemy->GetStartPosition().column << "}, ";
+		sb << "End: {" << "X: " << m_enemy->GetEndPosition().row << "Y: " << m_enemy->GetEndPosition().column << "}";
+		SetWindowTextA(DirectX11::Get().GetHWnd(), sb.str().c_str());
+		m_enemy->GetSearchingState()->GetAstar()->ClearMap();
 		m_enemy->ChangeState(m_enemy->GetSearchingState());
 	}
 
