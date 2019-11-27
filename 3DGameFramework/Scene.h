@@ -18,9 +18,14 @@ class Scene
 {
 public:
 	// マップファイルを取得する
-	string GetMapFile() const
+	//string GetMapFile() const
+	//{
+	//	return m_mapFile;
+	//}
+	// マップを取得する
+	ITiledMap* GetMap() const
 	{
-		return m_mapFile;
+		return m_tiledMap.get();
 	}
 	// ベイシックエフェクト
 	DirectX::BasicEffect* GetBasicEffect() 
@@ -56,12 +61,14 @@ private:
 	std::unique_ptr<DirectX::BasicEffect> m_basicEffect;
 	// インプットレイアウト
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> m_inputLayout;
+	// タイルマップ
+	std::unique_ptr<ITiledMap> m_tiledMap;
 	// キューブマップ
 	std::unique_ptr<CubeMap> m_cubeMap;
 	// 敵
 	std::unique_ptr<Enemy> m_enemy;
 	// マップファイル
-	std::string m_mapFile;
+	//std::string m_mapFile;
 
 	// DirectX11クラスのインスタンスを取得する
 	DirectX11& m_directX = DirectX11::Get();

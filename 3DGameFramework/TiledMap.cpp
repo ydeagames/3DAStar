@@ -1,4 +1,5 @@
 #include "TiledMap.h"
+#include "Position.h"
 
 // マップ行を取得する
 int TiledMap::GetMapRow() const
@@ -81,6 +82,61 @@ bool TiledMap::Load(const std::string& mapFile) noexcept
 		return true;
 	}
 	return false;
+}
+
+void TiledMap::SetSize(int col, int row) noexcept
+{
+	m_columnNum = col;
+	m_rowNum = row;
+	m_map.clear();
+	m_map.resize(m_rowNum, std::vector<int>(m_columnNum, MAP_ATTRIBUTE::O));
+}
+
+void TiledMap::GenerateImpl(int x, int y, int length, int& lengthMax, Position& posMax) noexcept
+{
+	static struct {
+		int x;
+		int y;
+	} dir[] = {
+		{0, -1}, /** UP */
+		{0, 1},  /** DOWN */
+		{-1, 0}, /** LEFT */
+		{1, 0}   /** RIGHT */
+	};
+
+	int d = rand() % 4;
+	int dd = d;
+	while (1) {
+		int px = x + dir[d].x * 2;
+		int py = y + dir[d].y * 2;
+		if (px < 0 || px >= m_columnNum || py < 0 || py >= m_rowNum || m_map[py][px] != MAP_ATTRIBUTE::O) {
+			d++;
+			if (d == 4)
+				d = 0;
+			if (d == dd)
+			{
+				return;
+			}
+			continue;
+		}
+		m_map[y + dir[d].y][x + dir[d].x] = MAP_ATTRIBUTE::P;
+		m_map[py][px] = MAP_ATTRIBUTE::P;
+		if (length > lengthMax)
+		{
+			lengthMax = length;
+			posMax = Position(py, px);
+		}
+		GenerateImpl(px, py, length + 1, lengthMax, posMax);
+		d = dd = rand() % 4;
+	}
+}
+
+Position TiledMap::Generate(int x, int y) noexcept
+{
+	int lengthMax = 0;
+	Position posMax;
+	GenerateImpl(x, y, 0, lengthMax, posMax);
+	return posMax;
 }
 
 // マップをリセットする

@@ -4,6 +4,8 @@
 
 #include <vector>
 
+class Position;
+
 // マップ属性
 enum MAP_ATTRIBUTE { O = -1, P = 0 };
 
@@ -20,6 +22,10 @@ public:
 	virtual std::vector<int> Split(const std::string& line, const char separator) = 0;
 	// マップを読み込む
 	virtual bool Load(const std::string& filename) = 0;
+	// マップサイズをセット
+	virtual void SetSize(int col, int row) noexcept = 0;
+	// マップを生成
+	virtual Position Generate(int x, int y) noexcept = 0;
 	// マップをリセットする
 	virtual void ResetMap() = 0;
 	// 純粋仮想デストラクタ

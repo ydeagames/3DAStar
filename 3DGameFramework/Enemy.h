@@ -108,8 +108,8 @@ private:
 
 	// テクスチャ
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
-	// マップファイル名
-	string m_mapFile;
+	// マップ
+	ITiledMap* m_tiledMap;
 
 	// 開始位置
 	Position m_startPosition;
@@ -120,6 +120,8 @@ private:
 
 	// 位置
 	DirectX::SimpleMath::Vector3 m_position;
+	// 位置
+	DirectX::SimpleMath::Vector3 m_position_end;
 	// 移動行列
 	DirectX::SimpleMath::Matrix m_translation;
 	// モデルオブジェクト

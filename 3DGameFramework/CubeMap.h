@@ -24,7 +24,9 @@ public:
 	// コンストラクタ
 	CubeMap(Scene* scene) noexcept;
 	// 初期化する
-	void Initialize(const std::string& mapFile) noexcept;
+	void Initialize() noexcept;
+	// マップを初期化する
+	void InitializeMap(ITiledMap* tiledMap) noexcept;
 	// 更新する
 	void Update(const DX::StepTimer& timer) noexcept;
 	// 描画する
@@ -48,7 +50,7 @@ private:
 	// Sceneオブジェクトへのポインタ
 	Scene* m_scene;
 	// マップ
-	std::unique_ptr<ITiledMap> m_tiledMap;
+	ITiledMap* m_tiledMap;
 
 	// DirectX11クラスのインスタンスを取得する
 	DirectX11& m_directX = DirectX11::Get();

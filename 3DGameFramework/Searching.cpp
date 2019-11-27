@@ -1,20 +1,25 @@
 #include "Searching.h"
 
-Searching::Searching(const std::string& mapFile) noexcept
-	: m_mapFile(mapFile)
+Searching::Searching(ITiledMap* tiledMap) noexcept
+	: m_tiledMap(tiledMap)
 	, m_startPosition(0, 0)
 	, m_endPosition(0, 0)
 {
+}
+
+int Searching::InitializeMap() noexcept
+{
+	m_pathFinding = std::make_unique<AStar>(m_tiledMap);
+	m_pathFinding->Initialize();
+
+	return 0;
 }
 
 int Searching::Initialize(IObject* object) noexcept
 {
 	m_enemy = static_cast<Enemy*>(object);
 
-	m_tiledMap = std::make_unique<TiledMap>();
-	m_tiledMap->Load(m_mapFile);
-	m_pathFinding = std::make_unique<AStar>(m_tiledMap.get());
-	m_pathFinding->Initialize();
+	InitializeMap();
 
 	return 0;
 }

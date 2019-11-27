@@ -7,8 +7,8 @@ Enemy::Enemy(Scene* scene) noexcept
 	, m_endPosition(0, 0)
 	, m_position(0, .5f, .0f)
 	, m_translation(DirectX::SimpleMath::Matrix::Identity)
+	, m_tiledMap(scene->GetMap())
 {
-	m_mapFile = scene->GetMapFile();
 }
 
 // ‰Šú‰»‚·‚é
@@ -17,7 +17,7 @@ int Enemy::Initialize() noexcept
 	m_idlingState = std::make_unique<Idling>();
 	m_idlingState->Initialize(this);
 
-	m_searchingState = std::make_unique<Searching>(m_mapFile);
+	m_searchingState = std::make_unique<Searching>(m_tiledMap);
 	m_searchingState->Initialize(this);
 
 	m_chasingState = std::make_unique<Chasing>();
@@ -89,6 +89,22 @@ void Enemy::Render(const DX::StepTimer & timer, const DirectX::SimpleMath::Matri
 	m_basicEffect->SetProjection(projection);
 	m_basicEffect->SetTexture(m_texture.Get());
 	m_primitive->Draw(m_basicEffect, m_inputLayout);
+
+	{
+		auto pos = DirectX::SimpleMath::Vector3((float)m_startPosition.column - 5.f, .5f, (float)m_startPosition.row - 5.f);
+		auto mat = DirectX::SimpleMath::Matrix::CreateScale(1.f, .01f, 1.f) * DirectX::SimpleMath::Matrix::CreateTranslation(pos + DirectX::SimpleMath::Vector3::Down * .4f);
+		m_basicEffect->SetWorld(mat);
+		m_basicEffect->SetTexture(nullptr);
+		m_primitive->Draw(m_basicEffect, m_inputLayout);
+	}
+	{
+		auto pos = DirectX::SimpleMath::Vector3((float)m_endPosition.column - 5.f, .5f, (float)m_endPosition.row - 5.f);
+		m_position_end = DirectX::SimpleMath::Vector3::Lerp(m_position_end, pos, .1f);
+		auto mat = DirectX::SimpleMath::Matrix::CreateScale(1.f, .01f, 1.f) * DirectX::SimpleMath::Matrix::CreateTranslation(m_position_end + DirectX::SimpleMath::Vector3::Down * .4f);
+		m_basicEffect->SetWorld(mat);
+		m_basicEffect->SetTexture(m_texture.Get());
+		m_primitive->Draw(m_basicEffect, m_inputLayout);
+	}
 
 	m_currentState->Render(timer);
 }

@@ -11,6 +11,8 @@
 #include "ITiledMap.h"
 #include "Node.h"
 
+class Position;
+
 class TiledMap : public ITiledMap
 {
 public:
@@ -27,6 +29,12 @@ public:
 	TiledMap() = default;
 	// マップを読み込む
 	bool Load(const std::string& mapFile) noexcept override;
+	// マップサイズをセット
+	void SetSize(int col, int row) noexcept override;
+	// マップを生成
+	void GenerateImpl(int x, int y, int length, int& lengthMax, Position& posMax) noexcept;
+	// マップを生成
+	Position Generate(int x, int y) noexcept override;
 	// マップをリセットする
 	void ResetMap() noexcept override;
 	// デストラクタ

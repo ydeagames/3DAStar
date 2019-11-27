@@ -17,13 +17,16 @@ public:
 	int Initialize(IObject* object) noexcept;
 	// 更新する
 	int Update(const DX::StepTimer& timer) noexcept;
+	// 強制終了
+	int Interrupt() noexcept;
+	int ResetRoute() noexcept;
 	// 描画する
 	void Render(const DX::StepTimer& timer) noexcept;
 	// 後始末をする
 	void Finalize() noexcept;
-private:
 	// 最短経路
 	std::vector<Position> m_route;
+private:
 	// 位置
 	DirectX::SimpleMath::Vector3 m_position;
 	// Enemyオブジェクトへのポインタ

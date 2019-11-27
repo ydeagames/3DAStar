@@ -38,7 +38,9 @@ public:
 	}
 
 	// コンストラクタ
-	Searching(const std::string& mapFile) noexcept;
+	Searching(ITiledMap* tiledMap) noexcept;
+	// マップを初期化する
+	int InitializeMap() noexcept;
 	// 初期化する
 	int Initialize(IObject* object) noexcept;
 	// 更新する
@@ -55,7 +57,7 @@ private:
 	// マップファイル
 	std::string m_mapFile;
 	// タイルドマップ
-	std::unique_ptr<ITiledMap> m_tiledMap;
+	ITiledMap* m_tiledMap;
 	// 最短経路探索
 	std::unique_ptr<IShortestPath> m_pathFinding;
 	// 最短経路

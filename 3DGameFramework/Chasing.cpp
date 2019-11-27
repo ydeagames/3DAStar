@@ -1,8 +1,5 @@
 #include "Chasing.h"
 
-using namespace DirectX;
-using namespace DirectX::SimpleMath;
-
 Chasing::Chasing() noexcept
 {
 }
@@ -16,12 +13,12 @@ int Chasing::Initialize(IObject* object) noexcept
 
 int Chasing::Update(const DX::StepTimer& timer) noexcept
 {
-	Vector3 Forward(.05f, 0, 0);
+	DirectX::SimpleMath::Vector3 Forward(.05f, 0, 0);
 
 	if (m_route.size()==0)
 	{
 		Position position = m_enemy->GetStartPosition();
-		m_position = Vector3((float)position.column - 5.f, 0.f, (float)position.row - 5.f);
+		m_position = DirectX::SimpleMath::Vector3((float)position.column - 5.f, .5f, (float)position.row - 5.f);
 ;		m_route = m_enemy->GetRoute();
 	}
 
@@ -29,10 +26,14 @@ int Chasing::Update(const DX::StepTimer& timer) noexcept
 		return FAILURE;
 
 	Position position = m_route[0];
-	auto next = Vector3((float)position.column - 5.f, 0.f, (float)position.row - 5.f);
-	if (Vector3::Distance(m_position, next) > .1f)
+	DirectX::SimpleMath::Vector3 next = DirectX::SimpleMath::Vector3((float)position.column - 5.f, .5f, (float)position.row - 5.f);
+	if (DirectX::SimpleMath::Vector3::DistanceSquared(m_position, next) > Forward.LengthSquared())
 	{
-		m_position = Vector3::Lerp(m_position, next, .5f);
+		auto diff = next - m_position;
+		float angle = std::atan2f(-diff.z, diff.x);
+		m_position += DirectX::SimpleMath::Vector3::Transform(Forward, DirectX::SimpleMath::Matrix::CreateRotationY(angle));
+
+		//m_position = DirectX::SimpleMath::Vector3::SmoothStep(m_position, next, .5f);
 	}
 	else
 	{
@@ -41,6 +42,24 @@ int Chasing::Update(const DX::StepTimer& timer) noexcept
 
 	m_enemy->SetVectorPosition(m_position);
 
+	if (m_route.size() == 0)
+		return FAILURE;
+
+	return SUCCESS;
+}
+
+int Chasing::Interrupt() noexcept
+{
+	Position position = m_enemy->GetEndPosition();
+	m_position = DirectX::SimpleMath::Vector3((float)position.column - 5.f, .5f, (float)position.row - 5.f);
+	m_enemy->SetVectorPosition(m_position);
+	m_route.clear();
+	return SUCCESS;
+}
+
+int Chasing::ResetRoute() noexcept
+{
+	m_route.clear();
 	return SUCCESS;
 }
 
